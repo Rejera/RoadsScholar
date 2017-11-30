@@ -10,9 +10,10 @@ package roadsscholar;
  * @author Jeremy Tiberg and Nathan Herr
  */
 public class Intersection {
-    public Boolean city;
     public String cityName;
-    public int intersectionNum;
-    public Intersection previous;
+    public Intersection previous[];
     
+    public Intersection(int numberOfIntersections){
+        previous = new Intersection[numberOfIntersections];
+    }
 }

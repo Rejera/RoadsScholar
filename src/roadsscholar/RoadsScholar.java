@@ -22,12 +22,15 @@ public class RoadsScholar {
             int numOfIntersections = inFile.nextInt();
             int numOfRoads = inFile.nextInt();
             int numOfCities = inFile.nextInt();
+            //initialize the distance array and path array
             double roadGraph[][] = new double [numOfIntersections][numOfIntersections];
             int path[][] = new int [numOfIntersections][numOfIntersections];
+            //fill the road graph with "infinity"
             for(int i = 0; i < numOfIntersections; i++) { // pre fill to infinity
                 Arrays.fill(roadGraph[i], Double.MAX_VALUE);
                 roadGraph[i][i] = 0.0;
             }
+            //set up the roads that are directly adjacent to each other
             for(int i = 0; i < numOfRoads; i++){
                 int from = inFile.nextInt();
                 int to = inFile.nextInt();
@@ -36,7 +39,7 @@ public class RoadsScholar {
                 path[from][to] = to;
                 path[to][from] = from;
             }
-            
+            //initialize the intersections and make an array of cities
             Intersection intersections[] = new Intersection[numOfIntersections];
             Intersection cities[] = new Intersection[numOfCities];
             for(int i = 0; i < numOfIntersections; i++) {
@@ -49,6 +52,7 @@ public class RoadsScholar {
                 cities[i].cityName = inFile.next();
             }
             int numOfSigns = inFile.nextInt();
+            // calculate the distances
             for(int k = 0; k < numOfIntersections; k++){
                 for(int u = 0; u < numOfIntersections; u++){
                     for(int v = 0; v < numOfIntersections; v++){
@@ -60,6 +64,13 @@ public class RoadsScholar {
                 }
             }
             
+            /* For each desired sign, read in the details of where the sign
+            should be. Then, check each city to see if the path to that city
+            from sign goes through the path the sign is on. If it does,
+            enter the distance from the first position to the city - the
+            distance the sign is away from that position to the sign entry.
+            Sort the array list of sign entries in the proper order, then print.
+            */
             Intersection temp;
             for(int i = 0; i < numOfSigns; i++){
                 int firstIntersection = inFile.nextInt();

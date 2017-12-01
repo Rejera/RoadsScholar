@@ -12,6 +12,7 @@ package roadsscholar;
 public class Intersection {
     public String cityName;
     public Intersection previous[];
+    public int intersectionNum;
     
     public Intersection(int numberOfIntersections){
         previous = new Intersection[numberOfIntersections];
